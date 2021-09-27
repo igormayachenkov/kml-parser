@@ -9,8 +9,11 @@
   },
   "author": "Igor Mayachenkov",
   "license": "ISC",
+  "dependencies": {
+    },
   "devDependencies": {
-    "opuntia": "^0.13.0"
+    "opuntia": "^0.13.0",
+    "jquery": "^3.6.0"
   },
   "scripts": {
     "start": "node test-server.js"
