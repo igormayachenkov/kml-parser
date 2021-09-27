@@ -1,0 +1,110 @@
+html{
+    padding:0px;
+    font-family: monospace;
+}
+body{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2em 1fr 1fr;
+    grid-gap: 0.2em;
+    padding:0px;
+    width: 100vw;
+    height: 100vh;  
+    margin:0px;
+    background:#aaa;
+}
+header{
+    grid-column: 1/3;
+    text-align: center;
+    line-height: 2em;
+    vertical-align: middle;
+    background: #006;
+    color:#fff;
+}
+.panel-text{
+    background-color: lightgrey;
+    padding:0em;
+}
+.panel-viewer{
+    background-color: lightgrey;
+    padding:0em;
+}
+.panel-map{
+    background-color: darkolivegreen;
+    padding:0em;
+}
+@media screen and (orientation:landscape){
+    .panel-text{
+        grid-column: 1;
+        grid-row:    2;
+    }
+    .panel-viewer{
+        grid-column: 1;
+        grid-row:    3;
+    }    
+    .panel-map{
+        grid-column: 2;
+        grid-row: 2 / 4;
+    }    
+    
+}
+@media screen and (orientation:portrait){
+    .panel-text{
+        grid-column: 1;
+        grid-row:    3;
+    }
+    .panel-viewer{
+        grid-column: 2;
+        grid-row:    3;
+    }    
+    .panel-map{
+        grid-column: 1/3;
+        grid-row: 2;
+    }    
+}
+
+h1 {
+    font-size: 100%;
+    font-weight: normal;
+    background: #068;
+    color:#fff;
+    margin:0em;
+    padding:0.2em 1em;
+}
+
+.layout-data2{
+  position: fixed;
+  top: 0%; bottom:0%;
+  left:0%; right: 60%;
+  padding: 0.5em;
+  background-color: lightgrey;
+  overflow-y: auto;
+}
+.layout-map2{
+  position: fixed;
+  top: 0%; bottom:0%;
+  left:40%; right: 0%;
+  padding: 0em;
+  background-color: darkolivegreen;
+}
+#map {
+  position: absolute;
+  top: 0%; bottom:0%;
+  left:0%; right: 0%;
+}
+
+button:hover,
+input[type='file']:hover{
+  cursor: pointer;
+  color: blue;
+}
+.layout-data h1{
+  margin:0em;
+  font-size: 100%;
+}
+.layout-data textarea{
+    font-family: 'Courier New', Courier, monospace;
+  width:100%;
+  height: 20%;
+  margin-bottom: 1em;
+}
