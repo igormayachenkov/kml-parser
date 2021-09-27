@@ -3,6 +3,7 @@
 <head>
 	<title>KML-parser</title>
     <link rel="shortcut icon" href="test-favicon.png" type="image/png"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link type="text/css" rel="stylesheet" href="test.css"/>
     <script type="module" src="test.js"></script>
 </head>
@@ -10,9 +11,12 @@
     <header>KML-parser test page</header>
     <div class="panel-text">
         <h1>KML-text source</h1>
+        <div><input type="file"  accept=".kml"></input></div>
+        <div><textarea></textarea></div>
     </div>
     <div class="panel-viewer">
         <h1>KML-parser result</h1>
+        <div><button id='parse-text'>Parse from text</button></div>
     </div>
     <div class="panel-map"></div>
 </body>
