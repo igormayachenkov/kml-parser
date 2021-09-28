@@ -1,11 +1,18 @@
 console.log('test.js')
 
 import {KML} from './index.js';
+import {SortedList} from './sorted-list.js';
 
 // Data
 let kml = null
 // Controls
 let inputText = null
+let list = null
+let compare = {			// compare functions
+    name : function(a, b){
+        return 0;
+    },
+}
 
 // Init
 $(function(){
@@ -21,15 +28,95 @@ $(function(){
     // VIEWER PANEL
     $('#parse-text').on('click',function(){
         try{
+            // Empty controls
+            list.empty()
+            // Load data
             kml.parseFromString(inputText.val())
             console.log('SUCCESS',kml)
+            // Load controls
+            let features = kml.root?.features
+            if(features){
+                console.log('features',features)
+                list.loadDataArray(features)
+            }
         }catch(error){
             console.error(error)
             alert(error)
         }
     })
+    // Main List Control
+    list  = new FeaturesList({
+        header:  null,//hdr,
+        body:    $('.panel-viewer .list'),
+        compare: compare
+    })
+     
 
 })
+
+//-----------------------------------------
+// THE MAIN LIST CONTROL
+class FeaturesList extends SortedList{
+
+    constructor(p){
+        super(p)
+        this.onRowClick = this.onRowClick.bind(this)
+    }
+
+    createRow(index, obj){
+        let row = super.createRow(index, obj)
+        this.fillRow (row, index, obj, true)
+        return row
+    }
+    updateRow(row, index, obj){
+        row.empty()
+        this.fillRow (row, index, obj, false)
+    }
+
+    fillRow(row, index, obj, rowOld){
+        let main = $('<div class="row-main"></div>')
+        main.on('click', this.onRowClick )
+        main.append(`<b>${obj.name}</b>`);
+        let details = $('<div class="row-details"></div>')
+
+        // Node or Leaf?
+        if(obj.features){
+            // NODE -> reccurent call
+            row.addClass('node')
+            let ctl = $(`<div class="list"></div>`)
+            details.append(ctl)
+            let sublist = new FeaturesList({
+                header:  null,//hdr,
+                body:    ctl,
+                compare: compare
+            })
+            sublist.loadDataArray(obj.features)
+        }else{
+            // LEAF
+            row.addClass('leaf')
+            // Locate icon
+            //if(obj.drawing)
+                main.append($(`<i class='row-icon locate'></i>`).click(function(event){
+                    event.stopPropagation();
+                    obj.drawing.locate()
+                }))
+            //else
+                //main.append($(`<b></b>`))
+                
+            //Details
+            details.append(`<div>feature #${index} details</div>`)
+
+        }
+
+        row.append(main)
+        row.append(details)
+    }
+
+    onRowClick(event){
+        let row = $(event.target).closest('[objid]')
+        row.toggleClass('expanded')
+    }
+}
 
 
 const kmlSample = '<?xml version="1.0" encoding="UTF-8"?>\
