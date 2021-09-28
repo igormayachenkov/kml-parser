@@ -1,7 +1,7 @@
 console.log('test.js')
 
 import {KML} from './index.js';
-import {SortedList} from './sorted-list.js';
+import {SortedList} from './lists.js';
 
 // Data
 let kml = null
@@ -59,21 +59,25 @@ $(function(){
 class FeaturesList extends SortedList{
 
     constructor(p){
+        p.header = {order:"name"}// dummy header
+        p.compare = {
+            name : function(a, b){
+                const nameA = a.name?a.name:''
+                const nameB = b.name?b.name:''
+				return nameA.localeCompare(nameB);
+			}
+        }
         super(p)
         this.onRowClick = this.onRowClick.bind(this)
     }
 
-    createRow(index, obj){
-        let row = super.createRow(index, obj)
-        this.fillRow (row, index, obj, true)
+    createRow(obj, index){
+        let row = super.createRow(obj, index)// index as id
+        this.fillRow (row, obj)
         return row
     }
-    updateRow(row, index, obj){
-        row.empty()
-        this.fillRow (row, index, obj, false)
-    }
 
-    fillRow(row, index, obj, rowOld){
+    fillRow(row, obj){
         let main = $('<div class="row-main"></div>')
         main.on('click', this.onRowClick )
         main.append(`<b>${obj.name}</b>`);
@@ -102,9 +106,9 @@ class FeaturesList extends SortedList{
                 }))
             //else
                 //main.append($(`<b></b>`))
-                
+
             //Details
-            details.append(`<div>feature #${index} details</div>`)
+            details.append(`<div>feature "${obj.name}" details</div>`)
 
         }
 
