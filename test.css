@@ -20,7 +20,20 @@ header{
     vertical-align: middle;
     background: #006;
     color:#fff;
+    position:relative;
 }
+header .logo{
+    display: block;
+    position: absolute;
+    top: 0em; left:0em;
+    width: 2em;
+    height: 2em;
+    cursor:pointer;
+}
+header .logo:hover{
+    background: #aaa;
+}
+
 .panel-text{
     background-color: lightgrey;
     padding:0em;
@@ -85,22 +98,6 @@ h1 {
     resize: none;
 }
 
-
-.layout-data2{
-  position: fixed;
-  top: 0%; bottom:0%;
-  left:0%; right: 60%;
-  padding: 0.5em;
-  background-color: lightgrey;
-  overflow-y: auto;
-}
-.layout-map2{
-  position: fixed;
-  top: 0%; bottom:0%;
-  left:40%; right: 0%;
-  padding: 0em;
-  background-color: darkolivegreen;
-}
 #map {
   position: absolute;
   top: 0%; bottom:0%;
@@ -112,6 +109,7 @@ input[type='file']:hover{
   cursor: pointer;
   color: blue;
 }
+
 .layout-data h1{
   margin:0em;
   font-size: 100%;
