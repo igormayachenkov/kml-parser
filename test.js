@@ -1,7 +1,7 @@
 console.log('test.js')
 
-import {KML} from './index.js';
-import {SortedList} from './lists.js';
+import * as KML from './src/kml.js';
+import {SortedList,DynamicSortedList} from './lists.js';
 
 // Data
 let kml = null
@@ -69,12 +69,6 @@ class FeaturesList extends SortedList{
         }
         super(p)
         this.onRowClick = this.onRowClick.bind(this)
-    }
-
-    createRow(obj, index){
-        let row = super.createRow(obj, index)// index as id
-        this.fillRow (row, obj)
-        return row
     }
 
     fillRow(row, obj){

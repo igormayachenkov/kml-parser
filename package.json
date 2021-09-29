@@ -2,7 +2,6 @@
   "name": "kml-parser",
   "version": "1.0.0",
   "description": "KML parser",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/igormayachenkov/kml-parser.git"
