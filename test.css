@@ -29,9 +29,12 @@ header .logo{
     width: 2em;
     height: 2em;
     cursor:pointer;
+    /*clip-path: circle(40%);*/
+    fill:red;
+    stroke: yellow;
 }
 header .logo:hover{
-    background: #aaa;
+    fill:orange;
 }
 
 .panel-text{
