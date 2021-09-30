@@ -1,7 +1,7 @@
 console.log('test.js')
 
 import * as KML from './src/kml.js';
-import {SortedList,DynamicSortedList} from './lists.js';
+import {SortedList,DynamicSortedList} from './node_modules/web-dev/src/lists.js';
 
 // Data
 let kml = null

@@ -1,20 +1,21 @@
 {
-  "name": "kml-parser",
-  "version": "1.0.0",
-  "description": "KML parser",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/igormayachenkov/kml-parser.git"
-  },
-  "author": "Igor Mayachenkov",
-  "license": "ISC",
-  "dependencies": {
+    "name": "kml-parser",
+    "version": "1.0.0",
+    "description": "KML parser",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/igormayachenkov/kml-parser.git"
     },
-  "devDependencies": {
-    "opuntia": "^0.13.0",
-    "jquery": "^3.6.0"
-  },
-  "scripts": {
-    "start": "node test-server.js"
-  }
+    "author": "Igor Mayachenkov",
+    "license": "ISC",
+    "dependencies": {
+        "web-dev": "github:igormayachenkov/web-dev"
+    },
+    "devDependencies": {
+        "opuntia": "^0.13.0",
+        "jquery": "^3.6.0"
+    },
+    "scripts": {
+        "start": "node test-server.js"
+    }
 }
