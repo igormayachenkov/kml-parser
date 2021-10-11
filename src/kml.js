@@ -47,6 +47,7 @@ export class Kml {
     constructor(kml) {
       this.kml = kml;
       this.name = null;
+      this.description = null
     }
   
     updateMapDrawing() {}
@@ -76,6 +77,7 @@ export class Kml {
             case 'name':
               this.name = elementChild.textContent;
               break;
+
             case 'description':
               this.description = elementChild.textContent;
               break;
@@ -136,6 +138,10 @@ export class Kml {
           switch (elementChild.tagName) {
             case 'name':
               this.name = elementChild.textContent;
+              break;
+
+            case 'description':
+              this.description = elementChild.textContent;
               break;
   
             case 'Point':
