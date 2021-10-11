@@ -76,7 +76,10 @@ export class Kml {
             case 'name':
               this.name = elementChild.textContent;
               break;
-  
+            case 'description':
+              this.description = elementChild.textContent;
+              break;
+    
             case 'Document':
               this.features.push(new Document(this.kml).parse(elementChild));
               break;
